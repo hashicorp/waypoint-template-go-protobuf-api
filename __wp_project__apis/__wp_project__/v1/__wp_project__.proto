@@ -8,6 +8,9 @@ service %%Wp_project%%Service {
   // HelloWorld is the default rpc. Feel free to delete.
   rpc HelloWorld(HelloWorldRequest) returns (HelloWorldResponse) {}
 
+  // ConnDB makes a connection to a database
+  rpc ConnDB(ConnDBRequest) returns (ConnDBResponse) {}
+
   // your rpcs here...
 }
 
@@ -26,3 +29,7 @@ message HelloWorldResponse {
   // Current time
   google.protobuf.Timestamp now = 3;
 }
+
+message ConnDBRequest {}
+
+message ConnDBResponse {}

@@ -59,47 +59,10 @@ func serve() error {
 	%%wp_project%%v1.Register%%Wp_project%%ServiceServer(grpcServer, %%wp_project%%Server)
 	reflection.Register(grpcServer)
 
-	log.Printf("Connecting to Postgres")
-	type conn struct {
-		user     string
-		password string
-		port     int
-		host     string
-		dbname   string
-	}
-
-	port, err := strconv.Atoi(os.Getenv("DATABASE_PORT"))
-	if err != nil {
-		log.Fatal(err)
-	}
-	connection := conn{
-		user:     os.Getenv("DATABASE_USERNAME"),
-		password: os.Getenv("DATABASE_PASSWORD"),
-		port:     port,
-		host:     os.Getenv("DATABASE_HOSTNAME"),
-		dbname:   os.Getenv("DATABASE_NAME"),
-	}
-
-	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
-		"password=%s dbname=%s sslmode=disable",
-		connection.host, connection.port, connection.user, connection.password, connection.dbname)
-	db, err := sql.Open("postgres", psqlInfo)
-	if err != nil {
-		panic(err)
-	}
-	defer db.Close()
-
-	err = db.Ping()
-	if err != nil {
-		log.Fatal(err)
-	}
-
 	log.Printf("Serving on %q", c.Server.BindAddr)
 	if err := grpcServer.Serve(listener); err != nil {
 		return errors.Wrapf(err, "gRPC server exited")
 	}
-
-
 
 	return nil
 }
