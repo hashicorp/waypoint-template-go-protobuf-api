@@ -1,3 +1,5 @@
+// Copyright (c) HashiCorp, Inc.
+
 package config
 
 import "github.com/hashicorp/hcl/v2/hclsimple"

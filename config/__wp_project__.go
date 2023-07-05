@@ -1,3 +1,5 @@
+// Copyright (c) HashiCorp, Inc.
+
 package config
 
 type %%Wp_project%% struct {
