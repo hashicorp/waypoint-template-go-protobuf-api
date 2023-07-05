@@ -1,3 +1,5 @@
+# Copyright (c) HashiCorp, Inc.
+
 # A sample local config file
 
 server {
