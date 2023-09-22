@@ -8,10 +8,10 @@ jobs:
   
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3.5.3
+      uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9
 
     - name: Set up Go
-      uses: actions/setup-go@v4.0.1
+      uses: actions/actions/setup-go@93397bea11091df50f3d7e59dc26a7711a8bcfbe
       with:
         go-version: '1.19'
         
@@ -22,7 +22,7 @@ jobs:
 
     # Install the `buf` CLI
     - name: Install buf
-      uses: bufbuild/buf-setup-action@v1.21.0
+      uses: bufbuild/buf-setup-action@0b2634d023322ed4186879e9a60c01783a8963d4
 
     - name: Generate protos
       run: buf generate
